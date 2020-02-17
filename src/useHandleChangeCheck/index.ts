@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
-import { CheckedTargetEvent } from '../../types/common';
+import { CheckedTargetEvent } from '../types/common';
 
-const useHandleChangeChecked = (
+const useHandleChangeCheck = (
   ...handlers: readonly ((checked: boolean) => void | undefined)[]
 ) =>
   useCallback(
@@ -11,4 +11,4 @@ const useHandleChangeChecked = (
     handlers,
   );
 
-export default useHandleChangeChecked;
+export default useHandleChangeCheck;

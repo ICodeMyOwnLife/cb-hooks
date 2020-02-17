@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { FilesTargetEvent } from '../../types/common';
+import { FilesTargetEvent } from '../types/common';
 
 const useHandleChangeFile = (
   ...handlers: readonly ((files: FileList | null) => void | undefined)[]

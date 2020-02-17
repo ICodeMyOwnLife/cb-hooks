@@ -23,7 +23,7 @@
     "eslint-config-react-ts": "^1.2.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.7",
-    "microbundle": "0.11.0",
+    "microbundle": "^0.12.0-next.8",
     "react": "^16.12.0",
     "typescript": "^3.7.5"
   },

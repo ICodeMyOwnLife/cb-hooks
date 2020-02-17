@@ -5,8 +5,8 @@
  */
 
 import { useState, useCallback } from 'react';
-import { InitialState } from '../../types/common';
 import useCurryFunction from '../useCurryFunction';
+import { InitialState } from '../types/common';
 
 const useToggle = (initialValue: InitialState<boolean> = false) => {
   const [value, setValue] = useState(initialValue);

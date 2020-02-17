@@ -7,8 +7,8 @@
 import { RefObject, useCallback } from 'react';
 import useEvent from '../useEvent';
 
-const useToggleFullscreen = <TElement extends Element>(
-  elementRef: RefObject<TElement>,
+const useToggleFullscreen = (
+  elementRef: RefObject<Element>,
   onChange: EventListener | null = null,
   onError: EventListener | null = null,
 ) => {

@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { InitialState } from '../../types/common';
+import { InitialState } from '../types/common';
 
 const useCurrent = <TValue>(initialValue?: InitialState<TValue>) => {
   const ref = useRef(initialValue);
