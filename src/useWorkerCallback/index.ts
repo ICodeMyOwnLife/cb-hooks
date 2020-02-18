@@ -39,7 +39,7 @@ const useWorkerCallback = <
     if (workerRef.current) workerRef.current.terminate();
   });
 
-  return [state, callback];
+  return [state, callback] as const;
 };
 
 export default useWorkerCallback;

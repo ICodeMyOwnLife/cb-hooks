@@ -10,7 +10,7 @@ const useCurrent = <TValue>(initialValue?: InitialState<TValue>) => {
     },
     get: () => ref.current,
     is: (value: TValue) => ref.current === value,
-  };
+  } as const;
 };
 
 export default useCurrent;
