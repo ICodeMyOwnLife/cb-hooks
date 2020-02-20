@@ -13,7 +13,7 @@ const useToggleFullscreen = (
   onError: EventListener | null = null,
 ) => {
   const toggleFullscreen = useCallback(
-    (show?: boolean, options?: FullscreenOptions) => {
+    (show?: boolean) => {
       if (
         document.fullscreenElement &&
         (show === false || show === undefined)
@@ -26,7 +26,7 @@ const useToggleFullscreen = (
         (show === true || show === undefined)
       ) {
         // eslint-disable-next-line no-unused-expressions
-        elementRef.current?.requestFullscreen?.(options);
+        elementRef.current?.requestFullscreen?.();
       }
     },
     [elementRef],

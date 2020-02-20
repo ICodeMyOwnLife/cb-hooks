@@ -10,17 +10,10 @@ import { InitialState } from '../types/common';
 
 const useToggle = (initialValue: InitialState<boolean> = false) => {
   const [value, setValue] = useState(initialValue);
-  const toggle = useCallback(
-    (nextValue?: boolean) =>
-      setValue(prevValue =>
-        typeof nextValue === 'boolean' ? nextValue : !prevValue,
-      ),
-    [],
-  );
+  const toggle = useCallback(() => setValue(prevValue => !prevValue), []);
   const setTrue = useCurryFunction(setValue, null, true);
   const setFalse = useCurryFunction(setValue, null, false);
-
-  return [value, toggle, setTrue, setFalse] as const;
+  return [value, toggle, setTrue, setFalse, setValue] as const;
 };
 
 export default useToggle;

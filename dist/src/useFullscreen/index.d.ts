@@ -1,3 +1,3 @@
-import { MutableRefObject } from 'react';
-declare const useFullscreen: (elementRef: MutableRefObject<Element>) => readonly [boolean, (show?: boolean | undefined, options?: FullscreenOptions | undefined) => void];
+import { RefObject } from 'react';
+declare const useFullscreen: (elementRef: RefObject<Element>) => readonly [boolean, (show?: boolean | undefined) => void, () => void, () => void];
 export default useFullscreen;
