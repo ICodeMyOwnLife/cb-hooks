@@ -43,5 +43,9 @@
     "{*.{json,md}}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "@types/json2mq": "^0.2.0",
+    "json2mq": "^0.2.0"
   }
 }

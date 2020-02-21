@@ -5,6 +5,7 @@ export declare const isSyntheticEvent: (o: any) => o is BaseSyntheticEvent<objec
 export declare const getWindowScrollOffset: () => Offset;
 export declare const getWindowSize: () => WindowSize;
 export declare const persistEvent: (o: unknown) => false | void;
+export declare const pickFrom: <TObject extends object, TKeys extends keyof TObject>(o: TObject, keys: TKeys[]) => Pick<TObject, TKeys>;
 export interface Offset {
     x?: number;
     y?: number;

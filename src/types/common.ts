@@ -61,3 +61,13 @@ export interface RateLimitFunctionWithOptions<TOptions> {
     options?: TOptions,
   ): CancellableRateLimitedFunction<TArgs, TReturn>;
 }
+
+export type OmitFrom<TObject, TKeys extends keyof TObject> = Omit<
+  TObject,
+  TKeys
+>;
+
+export type PickFrom<TObject, TKeys extends keyof TObject> = Pick<
+  TObject,
+  TKeys
+>;

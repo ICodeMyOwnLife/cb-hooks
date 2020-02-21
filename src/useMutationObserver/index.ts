@@ -4,11 +4,11 @@
  * https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
  */
 
-import { MutableRefObject, useLayoutEffect } from 'react';
+import { useLayoutEffect, RefObject } from 'react';
 import useUpdatedRef from '../useUpdatedRef';
 
 const useMutationObserver = <TNode extends Node>(
-  nodeRef: MutableRefObject<TNode>,
+  nodeRef: RefObject<TNode>,
   callback: MutationCallback,
   options?: MutationObserverInit,
 ) => {

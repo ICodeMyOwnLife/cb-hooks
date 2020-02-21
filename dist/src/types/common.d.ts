@@ -49,3 +49,5 @@ export interface RateLimitFunction {
 export interface RateLimitFunctionWithOptions<TOptions> {
     <TArgs extends any[], TReturn>(func: (...args: TArgs) => TReturn, wait: number, options?: TOptions): CancellableRateLimitedFunction<TArgs, TReturn>;
 }
+export declare type OmitFrom<TObject, TKeys extends keyof TObject> = Omit<TObject, TKeys>;
+export declare type PickFrom<TObject, TKeys extends keyof TObject> = Pick<TObject, TKeys>;

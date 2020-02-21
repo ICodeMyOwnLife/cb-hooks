@@ -19,6 +19,7 @@ export { default as useIntersectionObserver } from './useIntersectionObserver';
 export { default as useInterval } from './useInterval';
 export { default as useIsMounted } from './useIsMounted';
 export { default as useLink } from './useLink';
+export { default as useMediaQuery } from './useMediaQuery';
 export { default as useMutationObserver } from './useMutationObserver';
 export { default as useNumberInput } from './useNumberInput';
 export { default as useOnClickOutside } from './useOnClickOutside';

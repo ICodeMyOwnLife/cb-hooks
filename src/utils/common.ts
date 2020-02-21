@@ -1,4 +1,5 @@
 import { BaseSyntheticEvent } from 'react';
+import { PickFrom } from '../types/common';
 
 export const createUniqueObject = () => ({});
 
@@ -22,6 +23,15 @@ export const getWindowSize = (): WindowSize =>
     : {};
 
 export const persistEvent = (o: unknown) => isSyntheticEvent(o) && o.persist();
+
+export const pickFrom = <TObject extends object, TKeys extends keyof TObject>(
+  o: TObject,
+  keys: TKeys[],
+) =>
+  (Object.fromEntries(keys.map(k => [k, o[k]])) as unknown) as PickFrom<
+    TObject,
+    TKeys
+  >;
 
 export interface Offset {
   x?: number;
