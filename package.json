@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.m.js",
-  "types": "dist/src/index.d.ts",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/ICodeMyOwnLife/cb-hooks.git",
   "author": "Hien CB",
   "license": "MIT",
