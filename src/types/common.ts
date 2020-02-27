@@ -2,6 +2,10 @@ export interface ValueTargetEvent<TValue = any> {
   target: { value: TValue };
 }
 
+export type ValueTargetEventHandler<TValue = any> = (
+  e: ValueTargetEvent<TValue>,
+) => void;
+
 export interface CheckedTargetEvent {
   target: { checked: boolean };
 }
