@@ -3,12 +3,12 @@
  * https://github.com/hupe1980/react-script-hook/blob/master/src/use-script.tsx
  */
 
-import { HTMLAttributes, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import useIsMounted from '../useIsMounted';
 import { InitialState, AsyncState } from '../types/common';
 import { PENDING_STATE, LOADING_STATE } from '../constants/common';
 
-const createResourceHook = <TAttrs extends HTMLAttributes<HTMLElement>>(
+const createResourceHook = <TAttrs extends Partial<HTMLElement>>(
   tagName: 'script' | 'link',
   isValid: (attrs: TAttrs) => boolean,
 ) => (
@@ -28,9 +28,7 @@ const createResourceHook = <TAttrs extends HTMLAttributes<HTMLElement>>(
       document.querySelector(`${tagName}#${attrs.id}`)) ||
       document.createElement(tagName)) as HTMLScriptElement;
 
-    Object.keys(attrs).forEach(key => {
-      (element as any)[key] = (attrs as any)[key];
-    });
+    Object.assign(element, attrs);
 
     const handleLoad = () => {
       if (isMounted()) {
