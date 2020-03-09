@@ -1,8 +1,7 @@
-import { LinkHTMLAttributes } from 'react';
 import createResourceHook from '../creators/createResourceHook';
 import { isBrowser } from '../utils/common';
 
-const useLink = createResourceHook<LinkHTMLAttributes<HTMLLinkElement>>(
+const useLink = createResourceHook<Partial<HTMLLinkElement>>(
   'link',
   ({ href }) =>
     isBrowser() && !!href && !document.querySelector(`link[href="${href}"]`),
