@@ -5,8 +5,8 @@
 
 import { useState, useEffect } from 'react';
 import useIsMounted from '../useIsMounted';
-import { InitialState, AsyncState } from '../types/common';
 import { PENDING_STATE, LOADING_STATE } from '../constants/common';
+import { InitialState, AsyncState } from '../types/common';
 
 const createResourceHook = <TAttrs extends Partial<HTMLElement>>(
   tagName: 'script' | 'link',
