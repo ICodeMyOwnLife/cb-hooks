@@ -1,0 +1,11 @@
+[
+  {
+    "path": "dist/index.js",
+    "limit": "4 kb",
+    "running": false
+  },
+  {
+    "path": "dist/index.js",
+    "limit": "125 ms"
+  }
+]
