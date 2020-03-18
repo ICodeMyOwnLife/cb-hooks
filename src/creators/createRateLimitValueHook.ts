@@ -1,26 +1,26 @@
-/**
- * References:
- * https://github.com/imbhargav5/rooks/blob/dev/packages/debounce/src/useDebounce.ts
- */
-
-import { useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import useUpdatedRef from '../useUpdatedRef';
-import { persistEvent } from '../utils/common';
 import { RateLimitFunctionWithOptions } from '../types/common';
 
-const createRateLimitHook = <TOptions>(
+const createRateLimitValueHook = <TOptions>(
   rateLimit: RateLimitFunctionWithOptions<TOptions>,
 ) => <TArgs extends any[], TReturn>(
   func: (...args: TArgs) => TReturn,
+  args: TArgs,
   wait: number,
   options?: TOptions,
 ) => {
+  const [value, setValue] = useState<TReturn>();
   const funcRef = useUpdatedRef(func);
   const rateLimitedFuncRef = useRef(rateLimit(func, wait, options));
 
   useEffect(() => {
     rateLimitedFuncRef.current = rateLimit(
-      (...args) => funcRef.current(...args),
+      (...currentArgs) => {
+        const result = funcRef.current(...currentArgs);
+        setValue(result);
+        return result;
+      },
       wait,
       options,
     );
@@ -28,10 +28,12 @@ const createRateLimitHook = <TOptions>(
     return () => rateLimitedFuncRef.current?.cancel();
   }, [funcRef, options, wait]);
 
-  return useCallback<(...args: TArgs) => TReturn | undefined>((...args) => {
-    args.forEach(persistEvent);
-    return rateLimitedFuncRef.current(...args);
-  }, []);
+  useEffect(() => {
+    rateLimitedFuncRef.current(...args);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, args);
+
+  return value;
 };
 
-export default createRateLimitHook;
+export default createRateLimitValueHook;
