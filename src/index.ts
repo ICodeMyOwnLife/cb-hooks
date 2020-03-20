@@ -32,6 +32,7 @@ export { default as useResizeObserver } from './useResizeObserver';
 export { default as useSample } from './useSample';
 export { default as useSampleValue } from './useSampleValue';
 export { default as useScript } from './useScript';
+export { default as useScrollSpy } from './useScrollSpy';
 export { default as useTextInput } from './useTextInput';
 export { default as useThrottle } from './useThrottle';
 export { default as useThrottleValue } from './useThrottleValue';
