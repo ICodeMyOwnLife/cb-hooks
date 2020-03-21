@@ -1,4 +1,4 @@
-declare const useScrollSpy: () => [string, ScrollSpyRegister];
+declare const useScrollSpy: () => readonly [string | undefined, ScrollSpyRegister];
 export default useScrollSpy;
 export interface ScrollSpyRegister {
     (element: Element): void;

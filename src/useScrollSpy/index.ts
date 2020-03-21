@@ -1,36 +1,54 @@
-import { useRef, useCallback, useLayoutEffect, useState } from 'react';
+import { useRef, useCallback, useState, useEffect } from 'react';
 
 const useScrollSpy = () => {
   const [id, setId] = useState<string>();
   const elementMapRef = useRef(new Map<Element, string>());
+  const intersectingElementsRef = useRef(new Set<Element>());
 
   const register = useCallback((arg: string | Element) => {
     if (typeof arg === 'string') {
       const elementId = arg;
+
       return (element: Element) => {
         elementMapRef.current.set(element, elementId);
       };
     }
-    const element = arg;
-    const elementId = arg.getAttribute('id');
-    if (elementId) {
-      elementMapRef.current.set(element, elementId);
-    }
-    return undefined;
-  }, []);
 
-  useLayoutEffect(() => {
+    if (arg instanceof Element) {
+      const element = arg;
+      const elementId = arg.getAttribute('id');
+
+      if (elementId) {
+        elementMapRef.current.set(element, elementId);
+      }
+    }
+
+    return undefined;
+  }, []) as ScrollSpyRegister;
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       entries => {
-        const intersectingEntries = entries.filter(
-          ({ isIntersecting }) => isIntersecting,
+        entries.forEach(({ isIntersecting, target }) => {
+          if (isIntersecting) {
+            intersectingElementsRef.current.add(target);
+          } else {
+            intersectingElementsRef.current.delete(target);
+          }
+        });
+
+        if (!intersectingElementsRef.current.size) return;
+        const selectedElement = Array.from(
+          intersectingElementsRef.current,
+        ).reduce((prev, curr) =>
+          prev.getBoundingClientRect().top < curr.getBoundingClientRect().top
+            ? prev
+            : curr,
         );
 
-        if (!intersectingEntries.length) return;
-
-        const { target } = intersectingEntries[0];
         const newId =
-          elementMapRef.current.get(target) ?? target.getAttribute('id');
+          elementMapRef.current.get(selectedElement) ||
+          selectedElement?.getAttribute('id');
 
         if (typeof newId === 'string') {
           setId(newId);
@@ -44,7 +62,7 @@ const useScrollSpy = () => {
     return () => observer.disconnect();
   }, []);
 
-  return [id, register] as [string, ScrollSpyRegister];
+  return [id, register] as const;
 };
 
 export default useScrollSpy;

@@ -20,6 +20,7 @@ export { default as useHandleChangeText } from './useHandleChangeText';
 export { default as useIntersectionObserver } from './useIntersectionObserver';
 export { default as useInterval } from './useInterval';
 export { default as useIsMounted } from './useIsMounted';
+export { default as useLazyLoad } from './useLazyLoad';
 export { default as useLink } from './useLink';
 export { default as useMediaQuery } from './useMediaQuery';
 export { default as useMutationObserver } from './useMutationObserver';
