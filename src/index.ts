@@ -28,6 +28,8 @@ export { default as useMediaQuery } from './useMediaQuery';
 export { default as useMutationObserver } from './useMutationObserver';
 export { default as useNumberInput } from './useNumberInput';
 export { default as useOnClickOutside } from './useOnClickOutside';
+export { default as usePageVisibility } from './usePageVisibility';
+export { default as usePageVisibilityState } from './usePageVisibilityState';
 export { default as usePrevious } from './usePrevious';
 export { default as usePromise } from './usePromise';
 export { default as usePromiseCallback } from './usePromiseCallback';
