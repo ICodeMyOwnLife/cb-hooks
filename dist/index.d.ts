@@ -1,4 +1,5 @@
 export { default as useAnimationFrame } from './useAnimationFrame';
+export { default as useArray } from './useArray';
 export { default as useAudit } from './useAudit';
 export { default as useAuditValue } from './useAuditValue';
 export { default as useCallbackWithCleanup } from './useCallbackWithCleanup';
