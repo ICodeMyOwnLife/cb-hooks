@@ -1,6 +1,6 @@
 {
   "name": "cb-hooks",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Common reusable React hooks",
   "author": "Hien CB",
   "repository": "https://github.com/ICodeMyOwnLife/cb-hooks.git",
@@ -14,6 +14,7 @@
     "build": "microbundle",
     "commit": "git-cz",
     "dev": "microbundle watch",
+    "format": "prettier --write \"src/**/*.{ts,tsx,md}\"",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "yarn lint --fix",
     "prebuild": "del dist",

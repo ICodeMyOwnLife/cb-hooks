@@ -50,6 +50,7 @@ export { default as useThrottle } from './useThrottle';
 export { default as useThrottleValue } from './useThrottleValue';
 export { default as useTimeout } from './useTimeout';
 export { default as useTimeoutCallback } from './useTimeoutCallback';
+export { default as useTitle } from './useTitle';
 export { default as useToggle } from './useToggle';
 export { default as useToggleFullscreen } from './useToggleFullscreen';
 export { default as useTriggerUpdate } from './useTriggerUpdate';
