@@ -34,6 +34,7 @@ const usePromiseCallback = <TArgs extends any[], TResult, TError = unknown>(
       }
 
       setState(LOADING_STATE);
+
       promise
         .then(result => {
           if (currentPromise.is(promise) && isMounted()) {

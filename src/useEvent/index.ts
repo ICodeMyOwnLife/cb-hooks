@@ -31,7 +31,7 @@ const checkAndInvokeEventListener = (
   listener(event);
 };
 
-const useEvent: UseEventHook = (
+const useEvent: UseEvent = (
   element: ElementType<EventTarget>,
   eventNames: string | string[],
   listener: EventListener | null,
@@ -102,7 +102,7 @@ const useEvent: UseEventHook = (
 
 export default useEvent;
 
-interface UseEventHook {
+interface UseEvent {
   <TEventName extends keyof WindowEventMap>(
     element: ElementType<Window>,
     eventNames: TEventName | TEventName[],

@@ -11,6 +11,7 @@ import { InitialState, AsyncState } from '../types/common';
 const createResourceHook = <TAttrs extends Partial<HTMLElement>>(
   tagName: 'script' | 'link',
   isValid: (attrs: TAttrs) => boolean,
+  insert: (element: HTMLElement) => void,
 ) => (
   attrs: TAttrs,
   initialState: InitialState<AsyncState> = PENDING_STATE,
@@ -46,7 +47,7 @@ const createResourceHook = <TAttrs extends Partial<HTMLElement>>(
     element.addEventListener('error', handleError, false);
 
     setState(LOADING_STATE);
-    document.body.appendChild(element);
+    insert(element);
 
     return () => {
       element.removeEventListener('load', handleLoad, false);

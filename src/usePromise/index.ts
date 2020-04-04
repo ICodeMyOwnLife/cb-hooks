@@ -27,6 +27,7 @@ const usePromise = <TResult, TError = unknown>(
     }
 
     setState(LOADING_STATE);
+
     promise
       .then(result => {
         if (!isCancelled) setState({ loading: false, result });
