@@ -14,6 +14,7 @@ const usePromise = <TResult, TError = unknown>(
   promiseFactory: () => Promise<TResult> | false | undefined | null,
   deps: DependencyList = [],
   initialState: InitialState<AsyncState<TResult, TError>> = PENDING_STATE,
+  cleanup?: VoidFunction,
 ) => {
   const [state, setState] = useState(initialState);
 
@@ -37,6 +38,7 @@ const usePromise = <TResult, TError = unknown>(
 
     return () => {
       isCancelled = true;
+      cleanup?.();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
