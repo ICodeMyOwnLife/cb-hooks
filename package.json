@@ -1,6 +1,6 @@
 {
   "name": "cb-hooks",
-  "version": "1.9.0",
+  "version": "2.0.0",
   "description": "Common reusable React hooks",
   "author": "Hien CB",
   "repository": "https://github.com/ICodeMyOwnLife/cb-hooks.git",
