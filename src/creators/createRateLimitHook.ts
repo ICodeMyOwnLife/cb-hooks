@@ -4,7 +4,7 @@
  */
 
 import { useRef, useEffect, useCallback } from 'react';
-import useUpdatedRef from '../useUpdatedRef';
+import useUpdatedRef from '../hooks/useUpdatedRef';
 import { persistEvent } from '../utils/common';
 import { RateLimitFunctionWithOptions } from '../types/common';
 

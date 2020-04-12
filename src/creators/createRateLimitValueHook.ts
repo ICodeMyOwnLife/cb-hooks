@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import useUpdatedRef from '../useUpdatedRef';
+import useUpdatedRef from '../hooks/useUpdatedRef';
 import { RateLimitFunctionWithOptions } from '../types/common';
 
 const createRateLimitValueHook = <TOptions>(

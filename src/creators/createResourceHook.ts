@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import useIsMounted from '../useIsMounted';
+import useIsMounted from '../hooks/useIsMounted';
 import { PENDING_STATE, LOADING_STATE } from '../constants/common';
 import { InitialState, AsyncState } from '../types/common';
 

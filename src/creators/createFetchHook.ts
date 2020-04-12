@@ -9,7 +9,7 @@
  */
 
 import { useRef, DependencyList } from 'react';
-import usePromise from '../usePromise';
+import usePromise from '../hooks/usePromise';
 import FetchError from '../utils/FetchError';
 import { ValueOrFunction, AsyncState, OmitFrom } from '../types/common';
 
