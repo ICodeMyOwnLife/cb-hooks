@@ -11,11 +11,16 @@
 
 import { useRef, useEffect } from 'react';
 
-const usePrevious = <TValue>(value: TValue) => {
+const defaultPredicate = () => true;
+
+const usePrevious = <TValue>(
+  value: TValue,
+  predicate: (value: TValue) => boolean = defaultPredicate,
+) => {
   const prevRef = useRef<TValue>();
 
   useEffect(() => {
-    prevRef.current = value;
+    if (predicate(value)) prevRef.current = value;
   });
 
   return prevRef.current;
