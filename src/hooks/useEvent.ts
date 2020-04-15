@@ -7,6 +7,7 @@
 
 import { useRef, useEffect } from 'react';
 import useUpdatedRef from './useUpdatedRef';
+import { ValueFactory } from '../types/common';
 
 const getEventTarget = <TElement>(element: ElementType<TElement>) =>
   element instanceof Function ? element() : element;
@@ -135,9 +136,4 @@ export interface UseEventOptions extends AddEventListenerOptions {
   enabled?: boolean;
 }
 
-type ElementType<TElement> =
-  | TElement
-  | null
-  | undefined
-  | false
-  | (() => TElement | null | undefined | false);
+type ElementType<TElement> = ValueFactory<TElement | null | undefined | false>;

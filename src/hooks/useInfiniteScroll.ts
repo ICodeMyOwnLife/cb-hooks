@@ -1,9 +1,11 @@
 import { RefObject, useRef } from 'react';
-import useIntersectionObserverEffect from './useIntersectionObserverEffect';
+import useIntersectionObserverEffect, {
+  UseIntersectionObserverEffectOptions,
+} from './useIntersectionObserverEffect';
 
-const isIntersectingObserverInit = (
+const isOptionsObject = (
   o: unknown,
-): o is IntersectionObserverInit => o instanceof Object;
+): o is UseIntersectionObserverEffectOptions => o instanceof Object;
 
 const useInfiniteScroll: UseInfiniteScroll = (
   elementRef: RefObject<Element>,
@@ -14,10 +16,10 @@ const useInfiniteScroll: UseInfiniteScroll = (
   const loading: boolean | undefined =
     typeof args[0] === 'boolean' ? args[0] : undefined;
   const options:
-    | IntersectionObserverInit
-    | undefined = isIntersectingObserverInit(args[0])
+    | UseIntersectionObserverEffectOptions
+    | undefined = isOptionsObject(args[0])
     ? args[0]
-    : isIntersectingObserverInit(args[1])
+    : isOptionsObject(args[1])
     ? args[1]
     : undefined;
 
@@ -52,12 +54,12 @@ export interface UseInfiniteScroll {
   (
     elementRef: RefObject<Element>,
     loadMore: () => Promise<unknown>,
-    options?: IntersectionObserverInit,
+    options?: UseIntersectionObserverEffectOptions,
   ): void;
   (
     elementRef: RefObject<Element>,
     loadMore: VoidFunction,
     loading: boolean,
-    options?: IntersectionObserverInit,
+    options?: UseIntersectionObserverEffectOptions,
   ): void;
 }

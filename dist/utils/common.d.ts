@@ -1,5 +1,7 @@
 import { BaseSyntheticEvent } from 'react';
+import { ValueFactory } from '../types/common';
 export declare const createUniqueObject: () => {};
+export declare const getValueFromValueFactory: <TValue>(factory: ValueFactory<TValue>) => TValue;
 export declare const isBrowser: () => boolean;
 export declare const isSyntheticEvent: (o: any) => o is BaseSyntheticEvent<object, any, any>;
 export declare const getSearchParamsObject: <TSearchObject>(init?: string | string[][] | Record<string, string> | URLSearchParams | undefined) => TSearchObject;

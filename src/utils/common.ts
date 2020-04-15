@@ -1,7 +1,11 @@
 import { BaseSyntheticEvent } from 'react';
-import { PickFrom } from '../types/common';
+import { PickFrom, ValueFactory } from '../types/common';
 
 export const createUniqueObject = () => ({});
+
+export const getValueFromValueFactory = <TValue>(
+  factory: ValueFactory<TValue>,
+) => (factory instanceof Function ? factory() : factory);
 
 export const isBrowser = () =>
   typeof window !== 'undefined' && typeof window.document !== 'undefined';

@@ -11,7 +11,7 @@
 import { useRef, DependencyList } from 'react';
 import usePromise from '../hooks/usePromise';
 import FetchError from '../utils/FetchError';
-import { ValueOrFunction, AsyncState, OmitFrom } from '../types/common';
+import { AsyncState, OmitFrom, InitialState } from '../types/common';
 
 const createFetchHook = <TResult>(
   fetchFn: (input: RequestInfo, init?: RequestInit) => Promise<Response>,
@@ -20,7 +20,7 @@ const createFetchHook = <TResult>(
   input: RequestInfo,
   init?: OmitFrom<RequestInit, 'signal'>,
   deps?: DependencyList,
-  initialState?: ValueOrFunction<AsyncState<TAsyncResult, FetchError>>,
+  initialState?: InitialState<AsyncState<TAsyncResult, FetchError>>,
 ) => {
   const abortControllerRef = useRef<AbortController>();
 

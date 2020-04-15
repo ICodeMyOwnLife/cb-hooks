@@ -23,8 +23,8 @@ export interface TargetEvent<TTarget> {
 }
 export declare type ParameterType<TFunction extends (...args: any[]) => any> = TFunction extends (...args: infer TParams) => any ? TParams : never;
 export declare type ReturnTypeOfReturnType<TFunction extends (...args: any[]) => (...args: any[]) => any> = TFunction extends (...args: any[]) => (...args: any) => infer TReturn ? TReturn : never;
-export declare type ValueOrFunction<TValue> = TValue | (() => TValue);
-export declare type InitialState<TValue> = ValueOrFunction<TValue>;
+export declare type ValueFactory<TValue> = TValue | (() => TValue);
+export declare type InitialState<TValue> = ValueFactory<TValue>;
 export declare type AsyncState<TResult = unknown, TError = unknown> = {
     loading: boolean;
     result?: undefined;

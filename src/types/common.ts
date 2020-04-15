@@ -33,9 +33,9 @@ export type ReturnTypeOfReturnType<
   ? TReturn
   : never;
 
-export type ValueOrFunction<TValue> = TValue | (() => TValue);
+export type ValueFactory<TValue> = TValue | (() => TValue);
 
-export type InitialState<TValue> = ValueOrFunction<TValue>;
+export type InitialState<TValue> = ValueFactory<TValue>;
 
 export type AsyncState<TResult = unknown, TError = unknown> =
   | { loading: boolean; result?: undefined; error?: undefined }

@@ -5,12 +5,14 @@
  */
 
 import { RefObject } from 'react';
-import useIntersectionObserverEffect from './useIntersectionObserverEffect';
+import useIntersectionObserverEffect, {
+  UseIntersectionObserverEffectOptions,
+} from './useIntersectionObserverEffect';
 
 const useIntersectionObserver = (
   elementRef: RefObject<Element>,
   callback: IntersectionObserverCallback,
-  options?: IntersectionObserverInit,
+  options?: UseIntersectionObserverEffectOptions,
 ) =>
   useIntersectionObserverEffect(
     () => elementRef.current && [elementRef.current],
