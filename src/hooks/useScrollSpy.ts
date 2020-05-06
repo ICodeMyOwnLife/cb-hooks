@@ -1,5 +1,7 @@
 import { useRef, useCallback, useState } from 'react';
-import useIntersectionObserverEffect from './useIntersectionObserverEffect';
+import useIntersectionObserverEffect, {
+  UseIntersectionObserverEffectOptions,
+} from './useIntersectionObserverEffect';
 
 const defaultGetId = <TElement extends Element>(element: TElement) =>
   element?.getAttribute('id');
@@ -7,11 +9,11 @@ const defaultGetId = <TElement extends Element>(element: TElement) =>
 const isElement = <TElement extends Element>(o: unknown): o is TElement =>
   o instanceof Element;
 
-const useScrollSpy = <TElement extends Element = Element>(
-  { getId = defaultGetId, ...options }: UseScrollSpyOptions<TElement> = {
-    threshold: 1,
-  },
-) => {
+const useScrollSpy = <TElement extends Element = Element>({
+  getId = defaultGetId,
+  threshold = 1,
+  ...rest
+}: UseScrollSpyOptions<TElement> = {}) => {
   const [id, setId] = useState<string>();
   const elementMapRef = useRef(new Map<TElement, string>());
   const intersectingElementsRef = useRef(new Set<TElement>());
@@ -43,8 +45,8 @@ const useScrollSpy = <TElement extends Element = Element>(
   useIntersectionObserverEffect(
     () => Array.from(elementMapRef.current.keys()),
     entries => {
-      entries.forEach(({ isIntersecting, target }) => {
-        if (isIntersecting) {
+      entries.forEach(({ intersectionRatio, target }) => {
+        if (intersectionRatio >= threshold) {
           intersectingElementsRef.current.add(target as TElement);
         } else {
           intersectingElementsRef.current.delete(target as TElement);
@@ -68,7 +70,7 @@ const useScrollSpy = <TElement extends Element = Element>(
         setId(newId);
       }
     },
-    options,
+    { ...rest, threshold },
   );
 
   return [id, register] as const;
@@ -76,9 +78,10 @@ const useScrollSpy = <TElement extends Element = Element>(
 
 export default useScrollSpy;
 
-export interface UseScrollSpyOptions<TElement extends Element>
-  extends IntersectionObserverInit {
+export interface UseScrollSpyOptions<TElement>
+  extends UseIntersectionObserverEffectOptions {
   getId?: (element: TElement) => string | null | undefined;
+  threshold?: number;
 }
 
 export interface UseScrollSpyRegister<TElement extends Element> {

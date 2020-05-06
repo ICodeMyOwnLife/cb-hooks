@@ -1,6 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { useRef, useCallback } from 'react';
-import useIntersectionObserverEffect from './useIntersectionObserverEffect';
+import useIntersectionObserverEffect, {
+  UseIntersectionObserverEffectOptions,
+} from './useIntersectionObserverEffect';
 
 const defaultGetSrc = (image: HTMLImageElement) => image.dataset.src;
 
@@ -56,7 +58,8 @@ const useLazyLoad = ({
 
 export default useLazyLoad;
 
-export interface UseLazyLoadOptions extends IntersectionObserverInit {
+export interface UseLazyLoadOptions
+  extends UseIntersectionObserverEffectOptions {
   getSrc?: (image: HTMLImageElement) => string | null | undefined;
 }
 

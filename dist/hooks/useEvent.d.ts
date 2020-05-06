@@ -1,3 +1,4 @@
+import { ValueFactory } from 'cb-toolset/function';
 declare const useEvent: UseEvent;
 export default useEvent;
 interface UseEvent {
@@ -11,4 +12,4 @@ export interface UseEventOptions extends AddEventListenerOptions {
     usingAnimationFrame?: boolean;
     enabled?: boolean;
 }
-declare type ElementType<TElement> = TElement | null | undefined | false | (() => TElement | null | undefined | false);
+declare type ElementType<TElement> = ValueFactory<TElement | null | undefined | false>;

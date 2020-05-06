@@ -1,3 +1,4 @@
 import { RefObject } from 'react';
-declare const useIntersectionObserver: (elementRef: RefObject<Element>, callback: IntersectionObserverCallback, options?: IntersectionObserverInit | undefined) => void;
+import { UseIntersectionObserverEffectOptions } from './useIntersectionObserverEffect';
+declare const useIntersectionObserver: (elementRef: RefObject<Element>, callback: IntersectionObserverCallback, options?: UseIntersectionObserverEffectOptions | undefined) => void;
 export default useIntersectionObserver;

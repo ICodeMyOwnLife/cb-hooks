@@ -6,6 +6,7 @@
  */
 
 import { useRef, useEffect } from 'react';
+import { ValueFactory } from 'cb-toolset/function';
 import useUpdatedRef from './useUpdatedRef';
 
 const getEventTarget = <TElement>(element: ElementType<TElement>) =>
@@ -135,9 +136,4 @@ export interface UseEventOptions extends AddEventListenerOptions {
   enabled?: boolean;
 }
 
-type ElementType<TElement> =
-  | TElement
-  | null
-  | undefined
-  | false
-  | (() => TElement | null | undefined | false);
+type ElementType<TElement> = ValueFactory<TElement | null | undefined | false>;

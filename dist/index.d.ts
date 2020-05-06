@@ -10,6 +10,7 @@ export { default as useAnimationFrame } from './hooks/useAnimationFrame';
 export { default as useArray } from './hooks/useArray';
 export { default as useAudit } from './hooks/useAudit';
 export { default as useAuditValue } from './hooks/useAuditValue';
+export { default as useBase } from './hooks/useBase';
 export { default as useCallbackWithCleanup } from './hooks/useCallbackWithCleanup';
 export { default as useCheckInput } from './hooks/useCheckInput';
 export { default as useCurrent } from './hooks/useCurrent';
