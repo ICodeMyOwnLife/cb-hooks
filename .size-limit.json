@@ -5,7 +5,7 @@
     "webpack": false
   },
   {
-    "path": "dist/index.mjs",
+    "path": "dist/index.es.js",
     "limit": "300 ms",
     "webpack": false
   }
