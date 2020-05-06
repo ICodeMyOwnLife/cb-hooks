@@ -7,15 +7,15 @@
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist/"
   ],
   "scripts": {
-    "build": "microbundle -f es",
+    "build": "microbundle -f cjs,es",
     "commit": "git-cz",
-    "dev": "microbundle watch -f es",
+    "dev": "microbundle watch -f cjs,es",
     "format": "prettier --write \"src/**/*.{ts,tsx,md}\"",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "yarn lint --fix",

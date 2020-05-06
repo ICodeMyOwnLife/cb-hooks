@@ -1,11 +1,12 @@
 [
   {
-    "path": "dist/index.es.js",
-    "limit": "6 kb",
-    "running": false
+    "path": "dist/index.js",
+    "limit": "300 ms",
+    "webpack": false
   },
   {
-    "path": "dist/index.es.js",
-    "limit": "300 ms"
+    "path": "dist/index.mjs",
+    "limit": "300 ms",
+    "webpack": false
   }
 ]
