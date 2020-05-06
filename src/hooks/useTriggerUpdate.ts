@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import { createUniqueObject } from '../utils/common';
+import { createUniqueObject } from 'cb-toolset/object';
 
 const useTriggerUpdate = () =>
   useReducer(createUniqueObject, createUniqueObject());

@@ -1,11 +1,11 @@
 [
   {
-    "path": "dist/index.js",
+    "path": "dist/index.es.js",
     "limit": "6 kb",
     "running": false
   },
   {
-    "path": "dist/index.js",
+    "path": "dist/index.es.js",
     "limit": "300 ms"
   }
 ]

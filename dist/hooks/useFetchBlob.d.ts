@@ -11,5 +11,5 @@ declare const useFetchBlob: <TAsyncResult extends Blob = Blob>(input: RequestInf
     loading: false;
     result: TAsyncResult;
     error?: undefined;
-} | (() => import("../types/common").AsyncState<TAsyncResult, import("../utils/FetchError").default>) | undefined) => import("../types/common").AsyncState<TAsyncResult, import("../utils/FetchError").default>;
+} | import("cb-toolset/function").FunctionReturns<import("../types/common").AsyncState<TAsyncResult, import("../utils/FetchError").default>> | undefined) => import("../types/common").AsyncState<TAsyncResult, import("../utils/FetchError").default>;
 export default useFetchBlob;

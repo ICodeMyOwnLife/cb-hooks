@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
+import { RateLimitFunctionWithOptions } from 'cb-toolset/function';
 import useUpdatedRef from '../hooks/useUpdatedRef';
-import { RateLimitFunctionWithOptions } from '../types/common';
 
 const createRateLimitValueHook = <TOptions>(
   rateLimit: RateLimitFunctionWithOptions<TOptions>,

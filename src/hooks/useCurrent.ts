@@ -1,7 +1,7 @@
 import { useRef } from 'react';
-import { InitialState } from '../types/common';
+import { ValueFactory } from 'cb-toolset/function';
 
-const useCurrent = <TValue>(initialValue?: InitialState<TValue>) => {
+const useCurrent = <TValue>(initialValue?: ValueFactory<TValue>) => {
   const ref = useRef(initialValue);
 
   return {

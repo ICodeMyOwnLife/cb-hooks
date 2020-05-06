@@ -21,7 +21,8 @@ const usePrevious = <TValue>(
 
   useEffect(() => {
     if (predicate(value)) prevRef.current = value;
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
 
   return prevRef.current;
 };

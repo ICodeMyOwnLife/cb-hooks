@@ -1,5 +1,5 @@
+import { audit } from 'cb-toolset/function';
 import createRateLimitValueHook from '../creators/createRateLimitValueHook';
-import audit from '../utils/rateLimit/audit';
 
 const useAuditValue = createRateLimitValueHook(audit);
 

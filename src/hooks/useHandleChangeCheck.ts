@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { CheckedTargetEvent } from '../types/common';
+import { CheckedTargetEvent } from 'cb-toolset/dom';
 
 const useHandleChangeCheck = (
   ...handlers: readonly ((checked: boolean) => void | undefined)[]

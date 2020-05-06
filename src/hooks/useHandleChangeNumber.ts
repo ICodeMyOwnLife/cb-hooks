@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { ValueTargetEvent } from '../types/common';
+import { ValueTargetEvent } from 'cb-toolset/dom';
 
 const useHandleChangeNumber = (
   ...handlers: readonly ((value: number) => void | undefined)[]

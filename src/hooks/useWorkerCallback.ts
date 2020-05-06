@@ -1,7 +1,8 @@
 import { useRef, useState, useCallback } from 'react';
+import { ValueFactory } from 'cb-toolset/function';
 import useWillUnmount from './useWillUnmount';
 import { PENDING_STATE, LOADING_STATE } from '../constants/common';
-import { InitialState, AsyncState } from '../types/common';
+import { AsyncState } from '../types/common';
 
 const useWorkerCallback = <
   TMessage = unknown,
@@ -10,7 +11,7 @@ const useWorkerCallback = <
 >(
   workerUrl: string,
   options?: WorkerOptions,
-  initialState: InitialState<AsyncState<TResult, TError>> = PENDING_STATE,
+  initialState: ValueFactory<AsyncState<TResult, TError>> = PENDING_STATE,
 ) => {
   const [state, setState] = useState(initialState);
   const workerRef = useRef<Worker>();

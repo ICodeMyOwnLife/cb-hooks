@@ -4,9 +4,10 @@
  */
 
 import { useState, useEffect } from 'react';
+import { ValueFactory } from 'cb-toolset/function';
 import useIsMounted from '../hooks/useIsMounted';
 import { PENDING_STATE, LOADING_STATE } from '../constants/common';
-import { InitialState, AsyncState } from '../types/common';
+import { AsyncState } from '../types/common';
 
 const createResourceHook = <TAttrs extends Partial<HTMLElement>>(
   tagName: 'script' | 'link',
@@ -14,7 +15,7 @@ const createResourceHook = <TAttrs extends Partial<HTMLElement>>(
   insert: (element: HTMLElement) => void,
 ) => (
   attrs: TAttrs,
-  initialState: InitialState<AsyncState> = PENDING_STATE,
+  initialState: ValueFactory<AsyncState> = PENDING_STATE,
 ) => {
   const isMounted = useIsMounted();
   const [state, setState] = useState(initialState);

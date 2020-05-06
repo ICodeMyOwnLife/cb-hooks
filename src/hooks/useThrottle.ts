@@ -1,5 +1,5 @@
+import { throttle } from 'cb-toolset/function';
 import createRateLimitHook from '../creators/createRateLimitHook';
-import throttle from '../utils/rateLimit/throttle';
 
 const useThrottle = createRateLimitHook(throttle);
 

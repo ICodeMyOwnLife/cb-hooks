@@ -11,5 +11,5 @@ declare const useFetch: <TAsyncResult extends any = any>(input: RequestInfo, ini
     loading: false;
     result: TAsyncResult;
     error?: undefined;
-} | (() => import("../types/common").AsyncState<TAsyncResult, import("../utils/FetchError").default>) | undefined) => import("../types/common").AsyncState<TAsyncResult, import("../utils/FetchError").default>;
+} | import("cb-toolset/function").FunctionReturns<import("../types/common").AsyncState<TAsyncResult, import("../utils/FetchError").default>> | undefined) => import("../types/common").AsyncState<TAsyncResult, import("../utils/FetchError").default>;
 export default useFetch;

@@ -5,10 +5,10 @@
  */
 
 import { useState, useCallback } from 'react';
+import { ValueFactory } from 'cb-toolset/function';
 import useCurryFunction from './useCurryFunction';
-import { InitialState } from '../types/common';
 
-const useToggle = (initialValue: InitialState<boolean> = false) => {
+const useToggle = (initialValue: ValueFactory<boolean> = false) => {
   const [value, setValue] = useState(initialValue);
   const toggle = useCallback(() => setValue(prevValue => !prevValue), []);
   const setTrue = useCurryFunction(setValue, null, true);

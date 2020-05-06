@@ -7,13 +7,15 @@
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
-  "umd:main": "dist/index.umd.js",
-  "module": "dist/index.m.js",
+  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
-    "build": "microbundle",
+    "build": "microbundle -f es",
     "commit": "git-cz",
-    "dev": "microbundle watch",
+    "dev": "microbundle watch -f es",
     "format": "prettier --write \"src/**/*.{ts,tsx,md}\"",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "yarn lint --fix",
@@ -22,7 +24,6 @@
     "size": "size-limit",
     "type-check": "tsc --noEmit"
   },
-  "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
@@ -30,6 +31,7 @@
     "@types/history": "^4.7.5",
     "@types/react": "^16.9.27",
     "@types/react-router": "^5.1.5",
+    "cb-toolset": "^0.1.0",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "3.1.0",
     "del-cli": "^3.0.0",
@@ -43,6 +45,7 @@
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
+    "cb-toolset": "^0.1.0",
     "react": "> 16.8.0"
   },
   "config": {
@@ -63,5 +66,8 @@
     "{*.{json,md}}": [
       "prettier --write"
     ]
+  },
+  "engines": {
+    "node": ">= 12.0.0"
   }
 }

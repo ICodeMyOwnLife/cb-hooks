@@ -7,13 +7,14 @@
  */
 
 import { DependencyList, useState, useEffect } from 'react';
+import { ValueFactory } from 'cb-toolset/function';
 import { PENDING_STATE, LOADING_STATE } from '../constants/common';
-import { InitialState, AsyncState } from '../types/common';
+import { AsyncState } from '../types/common';
 
 const usePromise = <TResult, TError = unknown>(
   promiseFactory: () => Promise<TResult> | false | undefined | null,
   deps: DependencyList = [],
-  initialState: InitialState<AsyncState<TResult, TError>> = PENDING_STATE,
+  initialState: ValueFactory<AsyncState<TResult, TError>> = PENDING_STATE,
   cleanup?: VoidFunction,
 ) => {
   const [state, setState] = useState(initialState);

@@ -5,17 +5,18 @@
  */
 
 import { DependencyList, useState, useCallback } from 'react';
+import { ValueFactory } from 'cb-toolset/function';
 import useIsMounted from './useIsMounted';
 import useCurrent from './useCurrent';
 import { PENDING_STATE, LOADING_STATE } from '../constants/common';
-import { InitialState, AsyncState } from '../types/common';
+import { AsyncState } from '../types/common';
 
 const usePromiseCallback = <TArgs extends any[], TResult, TError = unknown>(
   promiseFactory: (
     ...args: TArgs
   ) => Promise<TResult> | false | undefined | null,
   deps: DependencyList = [],
-  initialState: InitialState<AsyncState<TResult, TError>> = PENDING_STATE,
+  initialState: ValueFactory<AsyncState<TResult, TError>> = PENDING_STATE,
 ) => {
   const isMounted = useIsMounted();
   const [state, setState] = useState(initialState);

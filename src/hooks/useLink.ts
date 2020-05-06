@@ -1,5 +1,5 @@
+import { isBrowser } from 'cb-toolset/dom';
 import createResourceHook from '../creators/createResourceHook';
-import { isBrowser } from '../utils/common';
 
 const useLink = createResourceHook<Partial<HTMLLinkElement>>(
   'link',

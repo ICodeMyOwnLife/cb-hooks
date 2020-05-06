@@ -13,5 +13,5 @@ declare const createFetchHook: <TResult>(fetchFn: (input: RequestInfo, init?: Re
     loading: false;
     result?: undefined;
     error: FetchError;
-} | (() => AsyncState<TAsyncResult, FetchError>) | undefined) => AsyncState<TAsyncResult, FetchError>;
+} | import("cb-toolset/function").FunctionReturns<AsyncState<TAsyncResult, FetchError>> | undefined) => AsyncState<TAsyncResult, FetchError>;
 export default createFetchHook;

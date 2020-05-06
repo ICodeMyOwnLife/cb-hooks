@@ -15,15 +15,16 @@
  */
 
 import { useState, useEffect } from 'react';
-import { pickFrom, isBrowser } from '../utils/common';
-import { PickFrom, InitialState } from '../types/common';
+import { pickFrom, PickFrom } from 'cb-toolset/object';
+import { isBrowser } from 'cb-toolset/dom';
+import { ValueFactory } from 'cb-toolset/function';
 
 const getMediaResult = (mql: MediaQueryList): MediaResult =>
   pickFrom(mql, 'matches', 'media');
 
 const useMediaQuery = (
   query: string,
-  initialState: InitialState<MediaResult> = { media: '', matches: false },
+  initialState: ValueFactory<MediaResult> = { media: '', matches: false },
 ) => {
   const [result, setResult] = useState(
     isBrowser() ? () => getMediaResult(window.matchMedia(query)) : initialState,

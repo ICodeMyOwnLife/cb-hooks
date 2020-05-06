@@ -57,6 +57,7 @@ export { default as useScrollSpy } from './hooks/useScrollSpy';
 export { default as useTextInput } from './hooks/useTextInput';
 export { default as useThrottle } from './hooks/useThrottle';
 export { default as useThrottleValue } from './hooks/useThrottleValue';
+export { default as useTimeline } from './hooks/useTimeline';
 export { default as useTimeout } from './hooks/useTimeout';
 export { default as useTimeoutCallback } from './hooks/useTimeoutCallback';
 export { default as useTitle } from './hooks/useTitle';

@@ -1,5 +1,5 @@
+import { debounce } from 'cb-toolset/function';
 import createRateLimitValueHook from '../creators/createRateLimitValueHook';
-import debounce from '../utils/rateLimit/debounce';
 
 const useDebounceValue = createRateLimitValueHook(debounce);
 

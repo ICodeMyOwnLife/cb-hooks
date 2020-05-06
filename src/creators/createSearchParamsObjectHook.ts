@@ -1,12 +1,12 @@
 import { Context, useContext } from 'react';
 import { RouteComponentProps } from 'react-router';
-import { getSearchParamsObject } from '../utils/common';
+import { createURLSearchObject } from 'cb-toolset/dom';
 
 const createSearchParamsObjectHook = (
   routerContext: Context<RouteComponentProps>,
-) => () => {
+) => <TSearchObject>() => {
   const searchString = useContext(routerContext).location.search;
-  return getSearchParamsObject(searchString);
+  return createURLSearchObject<TSearchObject>(searchString);
 };
 
 export default createSearchParamsObjectHook;
