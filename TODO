@@ -1,6 +1,0 @@
-Redux:
-  - useActions
-  - useShallowEqualSelector
-
-Router:
-  - useSearchQuery

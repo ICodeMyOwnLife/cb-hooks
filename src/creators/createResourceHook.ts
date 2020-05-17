@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { ValueFactory } from 'cb-toolset/function';
-import useIsMounted from '../hooks/useIsMounted';
+import useUpdatedRef from '../hooks/useUpdatedRef';
 import { PENDING_STATE, LOADING_STATE } from '../constants/common';
 import { AsyncState } from '../types/common';
 
@@ -15,10 +15,13 @@ const createResourceHook = <TAttrs extends Partial<HTMLElement>>(
   insert: (element: HTMLElement) => void,
 ) => (
   attrs: TAttrs,
+  onLoad?: (e: Event) => void,
+  onError?: (e: ErrorEvent) => void,
   initialState: ValueFactory<AsyncState> = PENDING_STATE,
 ) => {
-  const isMounted = useIsMounted();
   const [state, setState] = useState(initialState);
+  const onLoadRef = useUpdatedRef(onLoad);
+  const onErrorRef = useUpdatedRef(onError);
 
   useEffect(() => {
     if (!isValid(attrs)) {
@@ -32,16 +35,14 @@ const createResourceHook = <TAttrs extends Partial<HTMLElement>>(
 
     Object.assign(element, attrs);
 
-    const handleLoad = () => {
-      if (isMounted()) {
-        setState(PENDING_STATE);
-      }
+    const handleLoad = (e: Event) => {
+      setState(PENDING_STATE);
+      onLoadRef.current?.(e);
     };
 
     const handleError = (e: ErrorEvent) => {
-      if (isMounted()) {
-        setState({ loading: false, error: e.error });
-      }
+      setState({ loading: false, error: e.error });
+      onErrorRef.current?.(e);
     };
 
     element.addEventListener('load', handleLoad, false);
@@ -54,7 +55,8 @@ const createResourceHook = <TAttrs extends Partial<HTMLElement>>(
       element.removeEventListener('load', handleLoad, false);
       element.removeEventListener('error', handleError, false);
     };
-  }, [attrs, isMounted]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return state;
 };
