@@ -6,6 +6,7 @@
 import { useState, useEffect } from 'react';
 import { ValueFactory } from 'cb-toolset/function';
 import useUpdatedRef from '../hooks/useUpdatedRef';
+import useIsMounted from '../hooks/useIsMounted';
 import { PENDING_STATE, LOADING_STATE } from '../constants/common';
 import { AsyncState } from '../types/common';
 
@@ -15,18 +16,19 @@ const createResourceHook = <TAttrs extends Partial<HTMLElement>>(
   insert: (element: HTMLElement) => void,
 ) => (
   attrs: TAttrs,
-  onLoad?: (e: Event) => void,
-  onError?: (e: ErrorEvent) => void,
+  onLoad?: (e: Event, isMounted: boolean) => void,
+  onError?: (e: ErrorEvent, isMounted: boolean) => void,
   initialState: ValueFactory<AsyncState> = PENDING_STATE,
 ) => {
   const [state, setState] = useState(initialState);
   const onLoadRef = useUpdatedRef(onLoad);
   const onErrorRef = useUpdatedRef(onError);
+  const isMounted = useIsMounted();
 
   useEffect(() => {
     if (!isValid(attrs)) {
       setState(PENDING_STATE);
-      return undefined;
+      return;
     }
 
     const element = ((attrs.id &&
@@ -36,25 +38,20 @@ const createResourceHook = <TAttrs extends Partial<HTMLElement>>(
     Object.assign(element, attrs);
 
     const handleLoad = (e: Event) => {
-      setState(PENDING_STATE);
-      onLoadRef.current?.(e);
+      if (isMounted()) setState(PENDING_STATE);
+      onLoadRef.current?.(e, isMounted());
     };
 
     const handleError = (e: ErrorEvent) => {
-      setState({ loading: false, error: e.error });
-      onErrorRef.current?.(e);
+      if (isMounted()) setState({ loading: false, error: e.error });
+      onErrorRef.current?.(e, isMounted());
     };
 
-    element.addEventListener('load', handleLoad, false);
-    element.addEventListener('error', handleError, false);
+    element.addEventListener('load', handleLoad);
+    element.addEventListener('error', handleError);
 
     setState(LOADING_STATE);
     insert(element);
-
-    return () => {
-      element.removeEventListener('load', handleLoad, false);
-      element.removeEventListener('error', handleError, false);
-    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
