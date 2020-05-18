@@ -1,9 +1,5 @@
 [
   {
-    "path": "dist/index.js",
-    "limit": "300 ms"
-  },
-  {
     "path": "dist/index.es.js",
     "limit": "300 ms"
   }

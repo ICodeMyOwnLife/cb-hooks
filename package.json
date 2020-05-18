@@ -6,16 +6,16 @@
   "repository": "https://github.com/ICodeMyOwnLife/cb-hooks.git",
   "license": "MIT",
   "source": "src/index.ts",
-  "main": "dist/index.js",
+  "main": "dist/index.es.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist/"
   ],
   "scripts": {
-    "build": "microbundle -f cjs,es",
+    "build": "microbundle -f es",
     "commit": "git-cz",
-    "dev": "microbundle watch -f cjs,es",
+    "dev": "microbundle watch -f es",
     "format": "prettier --write \"src/**/*.{ts,tsx,md}\"",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "yarn lint --fix",
@@ -24,6 +24,9 @@
     "size": "size-limit",
     "type-check": "tsc --noEmit"
   },
+  "dependencies": {
+    "cb-toolset": "^0.2.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
@@ -31,7 +34,6 @@
     "@types/history": "^4.7.5",
     "@types/react": "^16.9.35",
     "@types/react-router": "^5.1.7",
-    "cb-toolset": "^0.1.4",
     "commitizen": "^4.1.2",
     "cz-conventional-changelog": "3.2.0",
     "del-cli": "^3.0.1",
@@ -40,12 +42,11 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.2",
     "microbundle": "^0.12.0",
-    "release-it": "^13.6.0",
+    "release-it": "^13.6.1",
     "size-limit": "^4.5.0",
     "typescript": "^3.9.2"
   },
   "peerDependencies": {
-    "cb-toolset": "^0.1.0",
     "react": "> 16.8.0"
   },
   "config": {
