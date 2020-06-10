@@ -1,6 +1,7 @@
 [
   {
     "path": "dist/index.es.js",
-    "limit": "300 ms"
+    "running": false,
+    "limit": "6 kb"
   }
 ]
