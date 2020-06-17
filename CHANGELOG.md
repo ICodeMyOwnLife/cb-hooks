@@ -1,3 +1,5 @@
+## [2.5.2](https://github.com/ICodeMyOwnLife/cb-hooks/compare/2.5.1...2.5.2) (2020-06-17)
+
 ## [2.5.1](https://github.com/ICodeMyOwnLife/cb-hooks/compare/2.5.0...2.5.1) (2020-06-10)
 
 
