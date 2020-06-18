@@ -1,3 +1,10 @@
+## [2.5.3](https://github.com/ICodeMyOwnLife/cb-hooks/compare/2.5.2...2.5.3) (2020-06-18)
+
+
+### Bug Fixes
+
+* fix type annotations ([435b2c4](https://github.com/ICodeMyOwnLife/cb-hooks/commit/435b2c4ea16fd6b5c90c1edb9d2849d6e9abfee0))
+
 ## [2.5.2](https://github.com/ICodeMyOwnLife/cb-hooks/compare/2.5.1...2.5.2) (2020-06-17)
 
 ## [2.5.1](https://github.com/ICodeMyOwnLife/cb-hooks/compare/2.5.0...2.5.1) (2020-06-10)
